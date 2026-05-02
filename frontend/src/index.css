@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-space-900 text-slate-100 font-sans antialiased;
+    background-color: #0a0a1a;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0d1117;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #30363d;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6366f1;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-space-700/60 backdrop-blur-md border border-slate-700/50 rounded-2xl;
+  }
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:border-quantum-indigo/40 hover:shadow-lg hover:shadow-quantum-indigo/10;
+  }
+  .btn-primary {
+    @apply px-5 py-2.5 bg-quantum-indigo hover:bg-indigo-500 text-white font-semibold rounded-xl
+           transition-all duration-200 shadow-lg shadow-quantum-indigo/30
+           hover:shadow-quantum-indigo/50 hover:-translate-y-0.5 active:translate-y-0
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0;
+  }
+  .btn-secondary {
+    @apply px-5 py-2.5 bg-space-600 hover:bg-space-500 text-slate-200 font-semibold rounded-xl
+           border border-slate-600 hover:border-slate-500
+           transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply px-4 py-2 text-slate-400 hover:text-slate-100 hover:bg-space-700/80
+           rounded-lg transition-all duration-200;
+  }
+  .input-field {
+    @apply w-full bg-space-800 border border-slate-700 focus:border-quantum-indigo/60
+           text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3
+           outline-none transition-all duration-200
+           focus:ring-2 focus:ring-quantum-indigo/20;
+  }
+  .metric-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+  .section-title {
+    @apply text-2xl font-bold bg-gradient-to-r from-quantum-indigo via-quantum-violet to-quantum-cyan
+           bg-clip-text text-transparent;
+  }
+  .code-block {
+    @apply bg-space-800 border border-slate-700/50 rounded-xl p-4 font-mono text-sm text-slate-300
+           overflow-x-auto;
+  }
+  .gradient-border {
+    position: relative;
+    border-radius: 16px;
+    background: linear-gradient(#161b22, #161b22) padding-box,
+                linear-gradient(135deg, #6366f1, #a855f7, #22d3ee) border-box;
+    border: 1px solid transparent;
+  }
+}
+
+/* Particle canvas */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glow effects */
+.quantum-glow {
+  text-shadow: 0 0 30px rgba(99, 102, 241, 0.6), 0 0 60px rgba(168, 85, 247, 0.3);
+}
+.btn-glow {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.4), 0 4px 15px rgba(99, 102, 241, 0.2);
+}
+.card-glow {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.1), 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Typing cursor animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink::after {
+  content: "|";
+  animation: blink 1s infinite;
+  color: #6366f1;
+}
+
+/* Spinner */
+@keyframes quantum-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.quantum-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(99, 102, 241, 0.2);
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: quantum-spin 0.8s linear infinite;
+}
+
+/* Histogram bar animations */
+@keyframes grow-up {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+/* Grid background */
+.bg-grid {
+  background-image: linear-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
